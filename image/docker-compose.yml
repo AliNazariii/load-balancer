@@ -1,0 +1,11 @@
+version: "3"
+services:
+    baba:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 50051-50053:50051
+        volumes:
+            - /:/home/ali
+        image: baba-img
