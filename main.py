@@ -6,9 +6,9 @@ from job import Job
 import re
 
 containers = [
-    Container(1, "172.18.0.2"),
-    Container(2, "172.18.0.3"),
-    Container(3, "172.18.0.4")
+    Container(1, "172.20.0.2"),
+    Container(2, "172.20.0.3"),
+    Container(3, "172.20.0.4")
 ]
 jobs = []
 stop = False
