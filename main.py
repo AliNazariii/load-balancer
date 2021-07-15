@@ -1,4 +1,5 @@
 from container import Container
+import subprocess
 import threading
 import requests
 import json
@@ -6,12 +7,18 @@ from job import Job
 import re
 
 containers = [
-    Container(1, "172.20.0.2"),
-    Container(2, "172.20.0.3"),
-    Container(3, "172.20.0.4")
+    Container(1, "172.18.0.2"),
+    Container(2, "172.18.0.3"),
+    Container(3, "172.18.0.4")
 ]
 jobs = []
 stop = False
+
+
+def docker_compose_up():
+  process = subprocess.Popen(["docker-compose", "--file", "image/docker-compose.yml", "up", "-d", "--scale", "baba=3"]).wait()
+def docker_compose_down():
+  process = subprocess.Popen(["docker-compose", "--file", "image/docker-compose.yml", "down"]).wait()
 
 
 def dispatch(container):
@@ -50,6 +57,7 @@ def cli():
     input_command = input()
     if input_command == ":wq":
       stop = True
+      docker_compose_down()
       break
     elif input_command == ":status":
       print(">> container states:")
@@ -67,4 +75,6 @@ def cli():
         jobs.append(Job(last_job_id, code, input_path, output_path))
 
 
+
+docker_compose_up()
 cli()
