@@ -16,7 +16,8 @@ stop = False
 
 
 def docker_compose_up():
-  process = subprocess.Popen(["docker-compose", "--file", "image/docker-compose.yml", "up", "-d", "--scale", "baba=3"]).wait()
+  # process = subprocess.Popen(["docker-compose", "--file", "image/docker-compose.yml", "up", "-d", "--scale", "baba=3"]).wait()
+  process = subprocess.Popen(["docker-compose", "--file", "image/docker-compose.yml", "up", "-d", "--build", "--scale", "baba=3"]).wait()
 def docker_compose_down():
   process = subprocess.Popen(["docker-compose", "--file", "image/docker-compose.yml", "down"]).wait()
 
